@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<aop:aspectj-autoproxy/>
+
+	<bean id="beanPersonelServis" class="com.omerkocbil.impl.PersonelServisImpl">
+		<property name="adi" value="Ömer" />
+		<property name="soyadi" value="Koçbil" />
+		<property name="tecrube" value="4" />
+	</bean>
+
+	<bean id="beanMetotCagrisiOncesiYapilacaklar" class="com.omerkocbil.aop.MetotCagrisiOncesiYapilacaklar" />
+
+	<aop:config>
+		<aop:aspect id="aspects" ref="beanMetotCagrisiOncesiYapilacaklar">
+			<aop:pointcut id="pointcutBefore" expression="execution(* com.omerkocbil.IPersonelServis.selamVer(..))"/>
+			<aop:before method="ilkGorev" pointcut-ref="pointcutBefore"/>
+		</aop:aspect>
+	</aop:config>
+	
+</beans>

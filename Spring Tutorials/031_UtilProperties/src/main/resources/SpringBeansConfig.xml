@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<!-- util namespace ini ekleyerek collection a ait elementlerin daha kolay yazılımını sağlarız -->
+	
+	<!-- Alttaki şekilde de yazabiliriz -->
+	<!-- <util:properties id = "baglanti" location="classpath:/baglanti.properties"/> -->
+	
+	<util:properties id = "baglanti" location="file:./src/main/resources/baglanti.properties" />
+
+	<bean name = "beanAyar" class = "com.omerkocbil.Ayar" >
+		<property name="properties" ref="baglanti" />
+	</bean>
+	
+</beans>

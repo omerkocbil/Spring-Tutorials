@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<aop:aspectj-autoproxy/>
+
+	<bean id="beanPersonelServis" class="com.omerkocbil.impl.PersonelServisImpl">
+		<property name="adi" value="Ömer" />
+		<property name="soyadi" value="K" />
+		<property name="tecrube" value="4" />
+	</bean>
+
+	<bean id="beanMetotCagrisiOncesiYapilacaklar" class="com.omerkocbil.aop.MetotCagrisiOncesiYapilacaklar" />
+	
+	<bean id="beanMetotCagrisiSonrasiYapilacaklar" class="com.omerkocbil.aop.MetotCagrisiSonrasiYapilacaklar" />
+	
+	<bean id="beanMetodunGeriDonusDegeriSonrasiYapilacaklar" class="com.omerkocbil.aop.MetodunGeriDonusDegeriSonrasiYapilacaklar" />
+
+	<bean id="beanMetotCagrisiIstisnaSonrasiYapilacaklar" class="com.omerkocbil.aop.MetotCagrisiIstisnaSonrasiYapilacaklar" />
+
+	<aop:config>
+		<aop:aspect id="aspects" ref="beanMetotCagrisiOncesiYapilacaklar">
+			<aop:pointcut id="pointcutBefore" expression="execution(* com.omerkocbil.IPersonelServis.selamVer(..))"/>
+			<aop:before method="ilkGorev" pointcut-ref="pointcutBefore"/>
+		</aop:aspect>
+		<!-- id lerin aynı olması bir sorun teşkil etmiyor -->
+		<aop:aspect id="aspects" ref="beanMetotCagrisiSonrasiYapilacaklar">
+			<aop:pointcut id="pointcutAfter" expression="execution(* com.omerkocbil.IPersonelServis.selamVer(..))"/>
+			<aop:after method="sonGorev" pointcut-ref="pointcutAfter"/>
+		</aop:aspect>
+		<aop:aspect id="aspects" ref="beanMetodunGeriDonusDegeriSonrasiYapilacaklar">
+			<aop:pointcut id="pointcutAfterReturning" expression="execution(* com.omerkocbil.IPersonelServis.selamVer(..))" />
+			<aop:after-returning method="geriDonusSonrasiGorev" returning="sonuc" pointcut-ref="pointcutAfterReturning"/>
+		</aop:aspect>
+		<aop:aspect id="aspects" ref="beanMetotCagrisiIstisnaSonrasiYapilacaklar">
+			<aop:pointcut id="pointcutAfterThrowing" expression="execution(* com.omerkocbil.IPersonelServis.adiSoyadiKontrolEt(..))" />
+			<aop:after-throwing method="istisnaSonrasiGorev" throwing="hata" pointcut-ref="pointcutAfterThrowing"/>
+		</aop:aspect>
+	</aop:config>
+	
+</beans>

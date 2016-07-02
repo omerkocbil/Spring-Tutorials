@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="beanPersonelServis" class="com.omerkocbil.PersonelServis">
+		<property name="adi" value="Ömer" />
+		<property name="soyadi" value="Koçbil" />
+		<property name="tecrube" value="4" />
+	</bean>
+
+	<bean id="beanCagrilanMetodunOncesiVeSonrasiOzellikleri" class="com.omerkocbil.aop.CagrilanMetodunOncesiVeSonrasiOzellikleri" />
+	
+	<bean name="basitBirPointcutBean" class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedName" value="selamVer"/>
+		<!-- Sadece yukarıda seçilen bu metodun öncesi ve sonrası konsolda yer alacak -->
+	</bean>
+	
+	<bean name="basitBirAdvisorBean" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="mappedName" value="selamVer"/>
+		<!-- Sadece yukarıda seçilen bu metodun öncesi ve sonrası konsolda yer alacak -->
+		<property name="advice" ref="beanCagrilanMetodunOncesiVeSonrasiOzellikleri"/>
+	</bean>		
+	
+	<bean name="beanPersonelServisProxy" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+	
+		<property name="beanNames">
+			<list>
+				<value>beanPersonelServis</value>
+			</list>
+		</property>
+		
+		<property name="interceptorNames">
+			<list>
+				<value>basitBirAdvisorBean</value>
+			</list>
+		</property>
+	
+	</bean>
+
+</beans>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean name="beanOgrenci" class="com.omerkocbil.Ogrenci">
+		<property name="adi" value="Ömer" />
+		<property name="soyadi" value="Koçbil" />
+		<property name="bolumu" value="Java Developer" />
+		<property name="yasi" value="20" />
+	</bean>
+
+	<bean name="beanKoleksiyonlar" class="com.omerkocbil.Koleksiyonlar">
+
+		<property name="ogrenciList">
+			<list>
+				<value> 571 </value>
+				<ref bean="beanOgrenci" />
+				<bean class="com.omerkocbil.Ogrenci">
+					<property name="adi" value="Ömer" />
+					<property name="soyadi" value="Koçbil" />
+					<property name="bolumu" value="Java Developer" />
+					<property name="yasi" value="20" />
+				</bean>
+			</list>
+		</property>
+
+		<property name="ogrenciSet">
+			<set>
+				<value> 632 </value>
+				<ref bean = "beanOgrenci" />
+				<bean class="com.omerkocbil.Ogrenci">
+					<property name="adi" value="Kadir" />
+					<property name="soyadi" value="İmer" />
+					<property name="bolumu" value="IT Departmanı" />
+					<property name="yasi" value="21" />
+				</bean>
+			</set>
+		</property>
+
+		<property name="ogrenciMap">
+			<map>
+				<entry key="1" value="Ali Baturay Kalkavan" />
+				<entry key="2" value-ref="beanOgrenci" />
+				<entry key="3">
+					<bean class="com.omerkocbil.Ogrenci">
+						<property name="adi" value="Burak" />
+						<property name="soyadi" value="Akın" />
+						<property name="bolumu" value="Ticaret" />
+						<property name="yasi" value="20" />
+					</bean>	
+				</entry>
+			</map>
+		</property>
+
+		<property name="ogrenciProp">
+			<props>
+				<prop key="İlginç"> Ömer Koçbil </prop>
+				<prop key="Rahat"> Burak Akın </prop>
+				<prop key="Cömert"> Kadir İmer </prop>
+			</props>
+		</property>
+
+	</bean>
+
+</beans>

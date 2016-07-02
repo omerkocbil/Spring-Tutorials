@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	
+	<!-- Alttaki etiket java sınıfındaki annotation ları Spring ayar dosyasına bildirir. -->
+	<context:annotation-config/>
+	
+	<bean name="beanOgrenci" class="com.omerkocbil.Ogrenci">
+		<property name="adi" value="Ömer"/>
+		<property name="soyadi" value="Koçbil"/>
+		<property name="yasi" value="20"/>
+	</bean>
+	
+	<bean name="beanDers" class="com.omerkocbil.Ders">
+		<property name="puan" value="98"/>
+		<property name="ders" value="Mat 1"/>
+	</bean>
+
+</beans>

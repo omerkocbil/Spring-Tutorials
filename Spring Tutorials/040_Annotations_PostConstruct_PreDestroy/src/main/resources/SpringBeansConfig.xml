@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	
+	<!-- Alttaki etiket java sınıfındaki annotation ları Spring ayar dosyasına bildirir. -->
+	<context:annotation-config/>
+	
+	<bean name="beanTakip" class="com.omerkocbil.Takip" init-method="init" destroy-method="destroy">
+		<property name="mesaj" value="Para çekiliyor..."/>
+	</bean>
+
+</beans>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<!-- autowire özelliğini byType yaptık. Spring beanler arasındaki bağımlıkları otomatik olarak tipe göre enjeksiyon eder -->
+	<bean name = "beanCalisan" class = "com.omerkocbil.Calisan" autowire="byType">
+		<property name="adi" value="Ömer"/>
+		<property name="soyadi" value="Koçbil"/>
+		<!-- <property name="adres" ref="beanAdres"/> Bu kod artık yok-->
+		<!-- <property name="adres" > <ref bean="beanAdres"/> </property> Yukarıdaki kod ile bu kod aynı -->
+	</bean>
+	
+	<bean name="beanAdres" class="com.omerkocbil.Adres">
+		<property name="tamAdresi" value="Kadıköy/İstanbul"/>
+	</bean>
+	
+</beans>

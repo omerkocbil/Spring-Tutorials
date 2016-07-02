@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean name="beanKaynak" class="com.omerkocbil.Kaynak" />
+	
+	<bean name="beanListeler" class="com.omerkocbil.Listeler" >
+		<property name="listElemani" value="#{beanKaynak.list[2]}" />
+		<property name="mapElemani" value="#{beanKaynak.map['Cem Dırman']}" />
+	</bean>
+	
+	<bean name="beanRegExKontrol" class="com.omerkocbil.RegExKontrol">
+		<property name="regEx" value="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+		<property name="regExSonuc"
+		value="#{(beanKaynak.map['Cem Dırman'] matches '^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$') == true ? 'UYGUN' : 'UYGUN DEĞİL' }"/>
+	</bean>
+
+</beans>

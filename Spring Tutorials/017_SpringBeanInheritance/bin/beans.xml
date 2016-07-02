@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+  
+    <bean id="merhaba" class="com.omerkocbil.Merhaba" >
+    	
+    	<property name="mesaj1" value="İsmail Abi"/>	
+    	<property name="mesaj2" value="Mecnun Ç"/>
+    
+    </bean>
+    
+    <bean id="yazar" class="com.omerkocbil.Yazar" parent="merhaba">
+    
+    	<property name="mesaj1" value="İskender"/>	
+    	<property name="mesaj3" value="Hırsız Yaviz"/>
+    
+    </bean>
+    	
+
+</beans>

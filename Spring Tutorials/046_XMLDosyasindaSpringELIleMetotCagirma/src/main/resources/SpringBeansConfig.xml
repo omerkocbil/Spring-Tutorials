@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean name="beanKitap" class="com.omerkocbil.Kitap" >
+		<property name="eserISBN" value="1681874186" />
+		<property name="eserAdi" value="Hacı N'aptın" />
+	</bean>
+	
+	<bean name="beanYazar" class="com.omerkocbil.Yazar" >
+		<property name="adi" value="Ömer" />
+		<property name="soyadi" value="Koçbil" />
+		<property name="kitap" value="#{beanKitap}" />
+		<property name="kitapAdi" value="#{beanKitap.eserAdi}" />
+		<property name="bilgi" value="#{beanKitap.kitapBilgisiniAl('Ömer', 'Koçbil', 'Hacı N'aptın', 17969816))}" />
+	</bean>
+
+</beans>

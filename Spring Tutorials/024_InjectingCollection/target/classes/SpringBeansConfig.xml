@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean name = "beanOgrenci" class = "com.omerkocbil.Ogrenci" >
+		
+		<property name="ogrenciList">
+			<list>
+				<value> Ömer Koçbil </value>
+				<value> Burak Akın </value>
+				<value> Kadir İmer </value>
+			</list>
+		</property>
+		
+		<property name="ogrenciSet">
+			<set>
+				<value> Ömer Koçbil </value>
+				<value> Burak Akın </value>
+				<value> Kadir İmer </value>
+			</set>
+		</property>
+		
+		<property name="ogrenciMap">
+			<map>
+				<entry key = "1" value = "Ömer Koçbil"/>
+				<entry key = "2" value = "Burak Akın"/>
+				<entry key = "3" value = "Kadir İmer"/>
+			</map>
+		</property>
+		
+		<property name="ogrenciProp">
+			<props>
+				<prop key="İlginç"> Ömer Koçbil </prop>
+				<prop key="Rahat"> Burak Akın </prop>
+				<prop key="Cömert"> Kadir İmer </prop>
+			</props>
+		</property>
+		
+	</bean>
+	
+</beans>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<!-- util namespace ini ekleyerek collection a ait elementlerin daha kolay yazılımını sağlarız -->
+	<bean name = "beanPersonel" class = "com.omerkocbil.Personel" >
+		<property name="setimiz">
+			<util:set set-class = "java.util.TreeSet">
+				<value>İskender Çınar</value>
+				<value>Gözlüklü Çocuk</value>
+				<value>Asıl Leyla</value>
+				<value>Diğer Leylalar</value>
+			</util:set>
+		</property>
+	</bean>
+	
+	<!-- set-class bölümüne HashSet yazarsak içinde saklarken sıralamayı kafasına göre yapar ama TreeSet yazarsak
+	     alfabetik sıraya göre otomatik sıralar -->
+
+</beans>
